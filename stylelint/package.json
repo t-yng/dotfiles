@@ -1,0 +1,12 @@
+{
+  "name": "browser-support",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "stylelint": "^9.0.0",
+    "stylelint-config-standard": "^18.1.0",
+    "stylelint-csstree-validator": "^1.2.2",
+    "stylelint-no-unsupported-browser-features": "^2.0.0"
+  }
+}
