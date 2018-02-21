@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-csstree-validator",
+  ],
+  "rules": {
+    "csstree/validator": true,
+    "plugin/no-unsupported-browser-features": [true, {
+      "browsers": ["> 1%", "Last 2 versions"],
+      "ignore": ["rem"]
+    }]
+  },
+  "extends": "stylelint-config-standard"
+}
