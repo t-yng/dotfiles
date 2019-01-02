@@ -1,0 +1,10 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+[alias]
+  history = "!f() { git --no-pager reflog | awk '$3 == \"checkout:\" && /moving from/ {print $8}' | awk '!a[$0]++' | head | peco | xargs git checkout; }; f"
+	st  = status
+	co  = commit
+	ch  = checkout
+	sta = stash
+	ll  = log

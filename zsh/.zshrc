@@ -1,13 +1,13 @@
 # homebrewのパス設定
 PATH="/usr/local/bin:$PATH"
 
+# プロンプトの表示設定
+
 # gitのコマンド補完設定
 # http://qiita.com/ryomits/items/8abbcc683457b5e9ca34
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -u
-
-# プロンプトの表示設定
 
 # gitのブランチ名を表示する設定
 # vcs_infoロード
@@ -32,9 +32,30 @@ $ '
 # 候補を選ぶには <Tab> か Ctrl-N,B,F,P
 zstyle ':completion:*:default' menu select=1
 
-# zshのプラグインマネージャーantigenの設定ファイルを読み込む
-# 設定ファイルは参考にしたブログ記事のアイディア : http://blog.glidenote.com/blog/2012/10/25/antigen/
-source ~/.zshrc.antigen
+# zplugを読み込む
+# https://github.com/zplug/zplug
+source ~/.zplug/init.zsh
+
+# 読み込むプラグインを記述
+
+# syntax error の回避のためbd.zshを読み込んでいる
+# @see: https://github.com/Tarrasch/zsh-bd/issues/8
+zplug "Tarrasch/zsh-bd", \
+    as:command, \
+    rename-to:bd, \
+    hook-load:"source ~/.zplug/repos/Tarrasch/zsh-bd/bd.zsh", \
+    use:"bd.zsh" \
+
+# プラグインが未インストールの場合にインストール
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# コマンドをリンクして、PATH に追加し、プラグインは読み込む
+zplug load
 
 # エイリアスの設定
 alias plantuml='java -jar ~/.plantuml/plantuml.jar'
