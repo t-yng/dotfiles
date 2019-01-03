@@ -23,13 +23,15 @@ mkdir ~/.eslint
 cp eslint/.eslintrc.yml ~/.eslint/
 
 # シェルの設定
+# zplugのインストール
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
 # zshへ切り替え
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/zsh
 
 # zshの設定ファイル
 cp zsh/.zshrc ~/
-source ~/.zshrc
 
 # ターミナルを再起動
 exec $SHELL -l
