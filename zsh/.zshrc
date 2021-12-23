@@ -1,5 +1,28 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
+
+
+
+
+
 # homebrewのパス設定
 PATH="/usr/local/bin:$PATH"
+
+# flutterへのパス設定
+PATH="$PATH:/Users/tomohiro/workspace/tools/flutter/bin"
+
+# Denoのパス設定
+export DENO_INSTALL="/Users/tomohiro/.local"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Rustへのパス設定
+PATH="$HOME/.cargo/bin:$PATH"
+
+# yarn global へのパス
+PATH="$(yarn global bin):$PATH"
 
 # プロンプトの表示設定
 
@@ -66,9 +89,33 @@ alias gch='git checkout $(git branch -a | tr -d " " |fzf --height 100% --prompt 
 alias gpull='git symbolic-ref --short HEAD | xargs git pull origin --rebase'
 alias gpush='git symbolic-ref --short HEAD | xargs git push origin'
 alias ls='ls -G'
-alias gchhis='git --no-pager reflog | awk '\''$3 == "checkout:" && /moving from/ {print $8}'\'' | awk '\''!a[$0]++'\'' | head | peco | xargs git checkout'
+alias gswpr='gh pr list | awk '\''{print $(NF-1)}'\'' | peco | xargs git switch'
 
 # nvmの設定
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pipenvの設定
+export PIPENV_VENV_IN_PROJECT=true
+
+export WAVE1_ADMIN_DEPLOY_USER=ec2-user
+export WAVE1_ADMIN_DEPLOY_HOST=18.176.202.76
+export WAVE1_ADMIN_DEPLOY_SSH_KEY=~/.ssh/wave1-admin-develop.pem 
+
+# C言語のコンパイルでopensslのライブラリパスを追加する
+# Rubyのmysql2のgemインストールでビルドエラーが出るのでその対処
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+
+# anyenv の読み込み
+eval "$(anyenv init -)"
+
+
+
+
+
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
