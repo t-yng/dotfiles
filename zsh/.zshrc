@@ -1,16 +1,6 @@
 # homebrewのパス設定
 PATH="/usr/local/bin:$PATH"
 
-# flutterへのパス設定
-# PATH="$PATH:/Users/tomohiro/workspace/tools/flutter/bin"
-
-# Denoのパス設定
-# export DENO_INSTALL="/Users/tomohiro/.local"
-# export PATH="$DENO_INSTALL/bin:$PATH"
-
-# Rustへのパス設定
-# PATH="$HOME/.cargo/bin:$PATH"
-
 # yarn global へのパス
 PATH="$(yarn global bin):$PATH"
 
@@ -73,17 +63,11 @@ alias gpull='git symbolic-ref --short HEAD | xargs git pull origin --rebase'
 alias gpush='git symbolic-ref --short HEAD | xargs git push origin'
 alias ls='ls -G'
 
-# pipenvの設定
-# export PIPENV_VENV_IN_PROJECT=true
-
-# C言語のコンパイルでopensslのライブラリパスを追加する
-# Rubyのmysql2のgemインストールでビルドエラーが出るのでその対処
-# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-
 # anyenv の読み込み
 eval "$(anyenv init -)"
 
-
+# .zshrc.local を読み込み
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
