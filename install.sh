@@ -1,26 +1,32 @@
 #!/bin/sh
 
 # homebrewのインストール
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # homebrewのパッケージをインストール
-brew bundle install --file=homebrew/.brewfile
+# brew bundle install --file=homebrew/.brewfile
 
 # gitの設定
-cp git/.gitignore_global ~/
-cp git/.gitconfig ~/
+ln git/.gitignore_global ~/
+ln git/.gitconfig ~/
+
+# .configの作成
+mkdir ~/.config
 
 # iterm2の設定
-mkdir ~/.iterm2
-cp iterm2/com.googlecode.iterm2.plist ~/.iterm2/
+ln -s iterm2 ~/.config
+
+# alfredの設定
+ln -s alfred ~/.config
+
+# karabinerの設定
+ln -s karabiner ~/.config
 
 # stylelintの設定
-mkdir ~/.stylelint
-cp stylelint/.stylelintrc ~/.stylelint/
+ln -s stylelint ~/.config
 
 # eslintの設定
-mkdir ~/.eslint
-cp eslint/.eslintrc.yml ~/.eslint/
+cp eslint ~/.config
 
 # シェルの設定
 # zplugのインストール
@@ -31,7 +37,7 @@ echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/zsh
 
 # zshの設定ファイル
-cp zsh/.zshrc ~/
+ln -s zsh/.zshrc ~/
 
 # ターミナルを再起動
 exec $SHELL -l
