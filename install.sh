@@ -14,16 +14,16 @@ ln git/.gitconfig ~/
 mkdir ~/.config
 
 # iterm2の設定
-ln -s iterm2 ~/.config
+ln iterm2 ~/.config
 
 # alfredの設定
-ln -s alfred ~/.config
+ln alfred ~/.config
 
 # karabinerの設定
-ln -s karabiner ~/.config
+ln karabiner ~/.config
 
 # stylelintの設定
-ln -s stylelint ~/.config
+ln stylelint ~/.config
 
 # eslintの設定
 cp eslint ~/.config
@@ -37,7 +37,7 @@ echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/zsh
 
 # zshの設定ファイル
-ln -s zsh/.zshrc ~/
+ln zsh/.zshrc ~/
 
 # ターミナルを再起動
 exec $SHELL -l
